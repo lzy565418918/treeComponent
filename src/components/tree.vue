@@ -1,32 +1,32 @@
 <template>
-  <div>
-      <div v-for="(item, index) in list" :key="index">
-        <span @click="changeStatus(index)">{{item.name}}</span>
-        <tree v-if="show" :list="item.cList"></tree>
-      </div>
-  </div>
+<div>
+  <ul v-for="(item, index) in list.cList" :key="index">
+    <treeitem :list="list"></treeitem>
+  </ul>
+</div>
 </template>
 
 <script>
+import treeitem from './treeitem.vue'
 export default {
   props: ["list"],
-  name: "tree",
+  components:{
+    treeitem
+  },
   data() {
     return {
-        show:false
+      show: false
     };
   },
+  mounted() {},
   methods: {
-      changeStatus(idx){
-          this.show = !this.show
-      }
-  },
+  }
 };
 </script>
 
 <style lang="less" scoped>
 div {
-    text-align: left;
-    padding-left: 20px !important;
+  text-align: left;
+  padding-left: 20px !important;
 }
 </style>
