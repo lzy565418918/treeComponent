@@ -1,21 +1,53 @@
 <template>
 <div>
-  <ul v-for="(item, index) in list.cList" :key="index">
+  <!-- <li v-for="(item, index) in list" :key="index"> -->
+    <h1>TOTAL</h1>
     <treeitem :list="list"></treeitem>
-  </ul>
+  <!-- </li> -->
 </div>
 </template>
 
 <script>
 import treeitem from './treeitem.vue'
 export default {
-  props: ["list"],
   components:{
     treeitem
   },
   data() {
     return {
-      show: false
+      list: [{
+            name: "菜单1",
+            cList: [{
+                name: "菜单1-1"
+              },
+              {
+                name: "菜单1-2",
+      
+                cList: [{
+                  name: "菜单1-2-1",
+        
+                  cList: [{
+                    name: "菜单1-2-1-1"
+                  }]
+                }]
+              }
+            ]
+          },
+          {
+            name: "菜单2"
+          },
+          {
+            name: "菜单3",
+            cList: [{
+              name: "菜单3-1"
+            }, {
+              name: "菜单3-2",
+              cList:[{
+                name:'菜单3-2-1'
+              }]
+            }]
+          }
+        ]
     };
   },
   mounted() {},
@@ -25,8 +57,5 @@ export default {
 </script>
 
 <style lang="less" scoped>
-div {
-  text-align: left;
-  padding-left: 20px !important;
-}
+
 </style>

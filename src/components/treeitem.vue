@@ -1,10 +1,10 @@
 <template>
-  <li>
-    <span>{{list.name}}</span>
-    <ul v-show="show">
-      <treeitem v-for="(item, index) in list.cList" :key="index"></treeitem>
-    </ul>
-  </li>
+  <div>
+    <li v-for="(item, index) in list" :key="index">
+      <span @click.stop="changeStatus">{{item.name}}</span>
+      <treeitem v-show="show" :list='item.cList'></treeitem>
+    </li>
+  </div>
 </template>
 
 <script>
@@ -26,4 +26,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
+div {
+  text-align: left;
+  padding-left: 20px !important;
+}
 </style>
